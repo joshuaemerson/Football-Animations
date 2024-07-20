@@ -1,4 +1,7 @@
-# js-library-emerso15
+# js-library-emerso15 
+
+## About:
+This library was developed in 2022 to simplify the creation of football-based route animations.
 
 ## Link to landing page:
 https://evening-spire-83388.herokuapp.com/index.html
