@@ -1,0 +1,335 @@
+/* Styling for the library code in the football_deconstruct.js file */
+
+/* All the player circle representation class tags will have this styling in common between them */
+/* We will modify their positions in their respective selectors */
+/* This same styling will be used across all offensive and defensive plays */
+.op1qb, .op1rb, .op1ol, .op1te, .op1wr1, .op1wr2, .op1wr3 {
+    background:darkcyan;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial';
+    font-size: x-large;
+    font-weight: bold;
+    color:whitesmoke;
+}
+
+.op1qb {
+    background:dodgerblue; /*use this colour for defence (just here as a refernce for now) */
+    display: flex;
+    position: absolute;
+    top: 60%;
+    left: 15%;
+}
+
+.op1rb {
+    background:mediumpurple;
+    display: flex;
+    position: absolute;
+    top: 69%;
+    left: 17.5%;
+}
+
+.op1ol {
+    background:seagreen;
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    margin: 10px;
+    top: 37.5%;
+    left: 28.3%;
+}
+
+.op1te {
+    background:#ff8c00;
+    display: flex;
+    position: absolute;
+    top: 75%;
+    left: 23%;
+}
+
+.op1wr1, .op1wr2, .op1wr3 {
+    background:rgb(252, 17, 142);
+    display: flex;
+}
+
+.op1wr1 {
+    position: absolute;
+    top: 5%;
+    left: 20%;
+}
+
+.op1wr2 {
+    position: absolute;
+    top: 18%;
+    left: 23%;
+}
+
+.op1wr3 {
+    position: absolute;
+    top: 28%;
+    left: 20%;
+}
+
+
+
+.offensivePlayOneContainer {
+    position: relative;
+    margin: auto;
+    background-color:black;
+    height: 90vh;
+    width: 98vw;
+}
+
+/* ARROWS - Source: https://codepen.io/zomgbre/pen/kmCsp */
+.op1qb .op1qb_arrow_curve {
+    position: absolute;
+    top: -60%;
+    left: -100%;
+    border: 3px solid dodgerblue;
+    border-color: transparent transparent transparent dodgerblue;
+	height: 100px;
+	width: 0px;
+    transform:rotate(-90deg);
+	border-radius: 0px 0px 0px 0px;
+}
+
+.op1rb .op1rb_arrow_curve {
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    border: 3px solid mediumpurple;
+    border-color: transparent transparent mediumpurple;
+    /* transform:rotate(120deg); */
+    height: 140px;
+    width: 300px;
+	border-radius: 0% 100% 26% 74% / 0% 0% 100% 100% 
+}
+
+.op1te .op1te_arrow_curve {
+    position: absolute;
+    top: -1025%;
+    left: 95%;
+    border-bottom: 3px solid#ff8c00;
+    border-right: 3px solid#ff8c00;
+    /* border-color: transparent   transparent #ff8c00; */
+	height: 540px;
+	width: 185px;
+    transform:rotate(0deg);
+	border-radius: 100% 0% 100% 0% / 0% 69% 31% 100% 
+}
+
+.op1ol .op1ol_arrow_curve {
+    position: absolute;
+    top: -15%;
+    left: -60%;
+    border: 3px solid seagreen;
+    border-color: transparent transparent transparent seagreen;
+	height: 50px;
+	width: 0px;
+    transform:rotate(-90deg);
+	border-radius: 0px 0px 0px 0px;
+}
+
+.op1wr1 .op1wr1_arrow_curve {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border-top: 3px solid rgb(252, 17, 142);
+    border-right: 3px solid rgb(252, 17, 142);
+	height: 575px;
+	width: 300px;
+    transform:rotate(0deg);
+	border-radius: 100% 0% 0% 100% / 0% 69% 31% 100% 
+}
+
+.op1wr2 .op1wr2_arrow_curve {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border-top: 3px solid rgb(252, 17, 142);
+	height: 575px;
+	width: 800px;
+    transform:rotate(0deg);
+	border-radius: 100% 0% 0% 100% / 0% 69% 31% 100% 
+}
+
+.op1wr3 .op1wr3_arrow_curve {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border-top: 3px solid rgb(252, 17, 142);
+    border-right: 3px solid rgb(252, 17, 142);
+	height: 170px;
+	width: 600px;
+    transform:rotate(0deg);
+	border-radius: 26% 74% 100% 0% / 0% 100% 0% 100% 
+}
+/* ARROWS */
+
+/* ANIMATIONS */
+.offensivePlayOneContainer:active .op1qb {
+    animation: op1qb-animation 1s linear forwards;
+}
+
+.offensivePlayOneContainer:active .op1qb_arrow_curve {
+    visibility: hidden;
+}
+
+@keyframes op1qb-animation {
+    100% {
+        transform: translateX(-200%) ;
+    }
+}
+
+.offensivePlayOneContainer:active .op1rb {
+    animation: op1rb-animation 2.5s linear forwards;
+}
+
+.offensivePlayOneContainer:active .op1rb_arrow_curve {
+    visibility: hidden;
+}
+
+@keyframes op1rb-animation {
+    15% {
+        transform: translateX(100%) translateY(250%) ;
+    }
+
+    25% {
+        transform: translateX(200%) translateY(300%) ;
+    }
+
+    66% {
+        transform: translateX(400%) translateY(320%) ;
+    }
+
+    100% {
+        transform: translateX(600%) translateY(0%) ;
+    }
+}
+
+.offensivePlayOneContainer:active .op1te {
+    animation: op1te-animation 2.5s linear forwards;
+}
+
+.offensivePlayOneContainer:active .op1te_arrow_curve {
+    visibility: hidden;
+}
+
+@keyframes op1te-animation {
+    33% {
+        transform: translateX(250%) translateY(-12%) ;
+    }
+
+    50% {
+        transform: translateX(420%) translateY(-100%) ;
+    }
+
+    100% {
+        transform: translateX(420%) translateY(-1050%) ;
+    }
+}
+
+.offensivePlayOneContainer:active .op1ol {
+    animation: op1ol-animation 1s linear forwards;
+}
+
+.offensivePlayOneContainer:active .op1ol_arrow_curve {
+    visibility: hidden;
+}
+
+@keyframes op1ol-animation {
+    100% {
+        transform: translateX(-50%) ;
+    }
+}
+
+.offensivePlayOneContainer:active .op1wr1 {
+    animation: op1wr1-animation 2.5s ease-in forwards;
+}
+
+.offensivePlayOneContainer:active .op1wr1_arrow_curve {
+    visibility: hidden;
+}
+
+@keyframes op1wr1-animation {
+    33% {
+        transform: translateX(670%)
+    }
+
+    100% {
+        transform: translateX(670%) translateY(1200%) ;
+    }
+}
+
+.offensivePlayOneContainer:active .op1wr2 {
+    animation: op1wr2-animation 2.5s ease-in-out forwards;
+}
+
+.offensivePlayOneContainer:active .op1wr2_arrow_curve {
+    visibility: hidden;
+}
+
+@keyframes op1wr2-animation {
+    100% {
+        transform: translateX(1750%) ;
+    }
+}
+
+.offensivePlayOneContainer:active .op1wr3 {
+    animation: op1wr3-animation 2.5s linear forwards;
+}
+
+.offensivePlayOneContainer:active .op1wr3_arrow_curve {
+    visibility: hidden;
+}
+
+@keyframes op1wr3-animation {
+    40% {
+        transform: translateX(500%);
+    }
+
+    50% {
+        transform: translateX(600%) translateY(20%);
+    }
+
+    55% {
+        transform: translateX(650%) translateY(30%);
+    }
+
+    60% {
+        transform: translateX(700%) translateY(60%);
+    }
+
+    65% {
+        transform: translateX(750%) translateY(80%);
+    }
+
+    70% {
+        transform: translateX(800%) translateY(130%);
+    }
+
+    75% {
+        transform: translateX(850%) translateY(140%);
+    }
+
+    80% {
+        transform: translateX(900%) translateY(180%);
+    }
+
+    85% {
+        transform: translateX(950%) translateY(210%);
+    }
+
+    90% {
+        transform: translateX(1000%) translateY(270%);
+    }
+
+    100% {
+        transform: translateX(1280%) translateY(370%);
+    }
+}
+/* ANIMATIONS */

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Football Deconstruct</title>
+
+    <link rel="stylesheet" type="text/css" href="documentation.css" />
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>FootballDeconstruct.js API Documentation</h1>
+        <a href="https://evening-spire-83388.herokuapp.com/examples.html">Examples</a>
+        <a href="https://evening-spire-83388.herokuapp.com/index.html">Home</a>
+
+        <h2>Getting Started</h2>
+        <p>To get started with the FootballDeconstruct library, first refer to and download the code from the 
+            <a href="https://github.com/csc309-fall-2021/js-library-emerso15">Github</a> page provided.</p>
+
+        <p>Then, you will need to include the following script tags in your HTML file to add the library API to your app. This can be done
+            as follows:
+        </p>
+
+        <ul>
+        <li> &lt;link rel="stylesheet" type="text/css" href="offensivePlayOne.css" /&gt; </li>
+        <li> &lt;link rel="stylesheet" type="text/css" href="defensivePlayOne.css" /&gt; </li>
+        <li> &lt;script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt;&lt;/script&gt; </li>
+        <li> &lt;script defer type="text/javascript" src="./js/football_deconstruct.js"&gt;&lt;/script&gt; </li>
+        </ul>
+
+        <p>Make sure to include the relevant jQuery link instead of the one shown above to ensure that jQuery works for you. 
+            Once the relevant script tags and stylesheets have been included as shown above, you can begin using the FootballDeconstruct library.</p>
+
+        <p>The code snippet below will demonstrate some of the basic functionality of the library. Specifically, the code below
+            demonstrates how to create a new 'Play' by creating a new instance of the Play class and initialize it to the example 
+            offensive play that is given in the library using the offensivePlayOne() function. We then need to appen this play
+            to the appropriate div in our HTML page (in this case the container div), We then call the modifyRoute() and 
+            changeAnimationTime() functions to modify the route of a particular player in our new Play and to change its animation time 
+            respectively. The constructor for creating a new play requires us to give a name to the play, in this case "First Play". The modifyRoute()
+            functions takes the parameters of the class-name of the div we want to modify, the new height and width values of the route, and the new 
+            border-radius value to change the shape of the route in that order. The changeAnimationTime() takes in the new time as the first parameter
+            followed by the class-name of the div whose animation we are changing (in this case the div for the qb object in our play) and the type of
+            animation we want to use (in this case linear). 
+        </p>
+
+        <code>
+            const o = new Play("First Play")
+        </code>
+        <code>
+            // creates and sets the Play Area and player objects
+        </code>
+        <code>
+            o.offensivePlayOne()
+        </code>
+        <code>
+            // append the Play Area to the body
+        </code>
+        <code>
+            $('.container').append(o.play)
+        </code>
+        <code>
+            o.modifyRoute("op1te", 540, 385, '100% 0% 100% 0% / 0% 69% 31% 100%')
+        </code>
+        <code>
+            o.changeAnimationTime(5, "op1qb", "linear")
+        </code>
+
+        <h2>API Functions</h2>
+
+        <p>To create a new play, instantiate a new instance of the class as follows:</p>
+        <code>const play = new Play("enter play name here")</code>
+        <p>The following is the API functions that can be used in this library:</p>
+
+        <table style="width:100%">
+            <tr>
+              <th>Function</th>
+              <th>Arguments</th> 
+              <th>Return Value</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>makePlayer(className, playerPosition)</td>
+              <td>className: the classname of the div that we want to create for this player object
+                  <br>
+                    playerPosition: the text that will appear inside this player circle object within the play
+                </td>
+              <td>The player object div for this player</td>
+              <td>This will create a new player object with their corresponding
+                  circle and arrow divs. This object will later be appended to the play.
+                  that we created and will have an animation assigned to it at some point.
+              </td>
+            </tr>
+
+            <tr>
+                <td>initPlayers(playerList)</td>
+                <td>playerList: an array which contains the className and playerPositions of all 11 players in offensivePlayOne().
+                    The className and playerPosition values are passed to the makePlayer() function to create the divs for all required players
+                    in the example offensive play for this library. 
+                  </td>
+                <td>An array of the 11 player divs that we created</td>
+                <td>This function is used to create all the divs we need for the offensivePlayOne() function
+                    by using the makePlayer() function to initalize all the players at once. We can later use 
+                    the array of divs returned and append these to the play to see the player objects on the play area
+                    once we have styled them accordingly.
+                </td>
+              </tr>
+
+              <tr>
+                <td>initRectangles(rectangleList)</td>
+                <td>prectangleList: an array which contains the class names of the divs for the rectangles used in defensivePlayOne().
+                  </td>
+                <td>An array of the empty rectangle divs that we created</td>
+                <td>This function is used to create all the rectangles we need for the defensivePlayOne() function
+                    all at once. We can later use the array of divs returned and append these to the play to see the 
+                    rectangle objects on the play area once we have styled them accordingly.
+                </td>
+              </tr>
+
+              <tr>
+                <td>offensivePlayOne()</td>
+                <td> None
+                  </td>
+                <td>None</td>
+                <td>This function is used to create the example offensive play that is defined in this libary. It uses
+                    the initPlayers() function to create the divs for all the players in this play and uses the styling in offensivePlayOne.css
+                    to display the play with its appropriate animations which can later be modified as needed. This function
+                    also sets the this.players and this.play values in the constructor to the corresponding values.
+                </td>
+              </tr>
+
+              <tr>
+                <td>defensivePlayOne()</td>
+                <td> None
+                  </td>
+                <td>None</td>
+                <td>This function is used to create the example offensive play that is defined in this libary. It uses
+                    the initPlayers() function and the initRectangles() function to create the divs for all the players
+                    and their rectagnles in this play. It also uses the styling in defensivePlayOne.css
+                    to display the play with its appropriate animations which can later be modified as needed. This function
+                    also sets the this.players, this.rectangles and this.play values in the constructor to the corresponding values.
+                </td>
+              </tr>
+
+              <tr>
+                <td>modifyRoute(playerPositionClass, newHeight, newWidth, borderRadius)</td>
+                <td>playerPositionClass: the class name of the div of the player whose route we are changing in this play
+                    <br>
+                    newHeight: the new height value of this route in pixels
+                    <br>
+                    newWidth: the new width value of this route in pixels
+                    <br>
+                    borderRadius: the new border-radius of this route which is passed as a string
+                  </td>
+                <td>None</td>
+                <td>This function is used to modify the visual appearance of the route for the player we specify in this play.
+                </td>
+              </tr>
+
+              <tr>
+                <td>modifyAnimation(newAnimation)</td>
+                <td> newAnimation: A js object with an animation field that represents an @keyframes animation. This will be the new animation
+                    we will use for the player which is specified in this js object.
+                  </td>
+                <td>None</td>
+                <td>This function is used to modify the visual appearance of the animation for whatever player is specified in 
+                    the js object we passed in. This can also be used to set an animation for a player object if the player does 
+                    not already have an animation.
+                </td>
+              </tr>
+
+              <tr>
+                <td>makeFootball(top, left)</td>
+                <td> top: represents the top css value of where this football will appear in the play area (represents a % value)
+                    <br>
+                    left: represents the left css value of where this football will appear in the play area (represents a % value)
+                  </td>
+                <td>None</td>
+                <td>This function is used to create the football object in our play. The function appends
+                    the object to the play and sets the styling of the football accordingly. Has a "F" character
+                    inside it to represent that it is a football.
+                </td>
+              </tr>
+
+              <tr>
+                <td>throwFootball(playerPositionClass, x, y)</td>
+                <td> playerPositionClass: represents the class name of the div for the player object we are throwing this football to
+                    <br>
+                    x: the final position along the x axis (as a %) after the animation for this player object is complete
+                    <br>
+                    y: the final position along the y axis (as a %) after the animation for this player object is complete
+                  </td>
+                <td>None</td>
+                <td>This function is used to animate the football to the player position we desire. It will occur as soon as the 
+                    function is envoked so refreshing the screen might be required to see the animation occur.
+                </td>
+              </tr>
+
+              <tr>
+                <td>changeAnimationTime(newTime, playerPositionClass, animationType)</td>
+                <td> newTime: the new duration of this animation in seconds
+                    <br>
+                    playerPositionClass: represents the class name of the div for the player object we are changing the animation time of
+                    <br>
+                    animationType: one of the built in css animation types (ex. linear)
+                  </td>
+                <td>None</td>
+                <td>This function is used to change the duration of the animation for the player we requested in the play. We can also
+                    change the type of the animation as well.
+                </td>
+              </tr>
+
+              <tr>
+                <td>createEmptyPlay(containerName)</td>
+                <td> containerName: the name of the container which will hold the div of this play
+                  </td>
+                <td>None</td>
+                <td>This function is used to create an empty play with predefined styling set for the play area (where the player
+                    get added to). Sets it own players and rectangles list which get updated as we add players and rectangles to this
+                    play. We set this.play to the div of the playContainer we create from this function.
+                </td>
+              </tr>
+
+              <tr>
+                <td>createPlayer(className, playerPosition, colour, top, left, height, width, borderRadius, rotate)</td>
+                <td> className: the class name of the div we want to give this player 
+                    <br>
+                    playerPosition: the text that will appear inside the player circle for this player object
+                    <br>
+                    colour: the colour of the player circle for this player object
+                    <br>
+                    top: represents the top css value of where this player object will appear in the play area (represents a % value)
+                    <br>
+                    left: represents the left css value of where this player object will appear in the play area (represents a % value)
+                    <br>
+                    height: represents the height of the route arrow in pixels
+                    <br>
+                    width: represents the width of the route arrow in pixels
+                    <br>
+                    borderRadius: represents the border-radius setting for this route (passed in as a string)
+                    <br>
+                    rotate: the amount to rotate the arrow for this route in degrees
+                  </td>
+                <td>None</td>
+                <td>This function is used to add a new player object to the play with the specified paramaters. It appends
+                    this player object to the player list of the play its associated with. The player div that is created
+                    from this function gets appended to the play area of this play.
+                </td>
+              </tr>
+
+              <tr>
+                <td>createRectangle(className, top, left, height, width, colour)</td>
+                <td> className: the class name of the div we want to give this rectangle
+                    <br>
+                    top: represents the top css value of where this rectangle object will appear in the play area (represents a % value)
+                    <br>
+                    left: represents the left css value of where this rectangle object will appear in the play area (represents a % value)
+                    <br>
+                    height: represents the height of the rectagnle in pixels
+                    <br>
+                    width: represents the width of the rectagnle in pixels
+                    <br>
+                    colour: the colour of the rectangle object
+                  </td>
+                <td>None</td>
+                <td>This function is used to add a new rectangle object to the play with the specified paramaters. It appends
+                    this rectangle object to the rectagnle list of the play its associated with. The rectangle div that is created
+                    from this function gets appended to the play area of this play.
+                </td>
+              </tr>
+
+              <tr>
+                <td>deleteItem(className)</td>
+                <td> className: the class name of the div we want to remove
+                  </td>
+                <td>None</td>
+                <td>This function is used to remove any divs which the user would like to help them
+                    organize their plays. Can be used to remove entire play divs or specific player object divs
+                </td>
+              </tr>
+          </table>
+
+    </div>
+  </body>
+</html>

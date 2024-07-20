@@ -1,0 +1,23 @@
+{
+  "name": "football_deconstruct",
+  "version": "1.0.0",
+  "description": "A football based library to visualize play calls",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Joshua Emerson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csc309-fall-2021/js-library-emerso15.git"
+  },
+  "bugs": {
+    "url": "https://github.com/csc309-fall-2021/js-library-emerso15/issues"
+  },
+  "homepage": "https://github.com/csc309-fall-2021/js-library-emerso15#readme"
+}
